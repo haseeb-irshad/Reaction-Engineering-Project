@@ -18,10 +18,6 @@ class PyrrolidineSNAr(Benchmark):
 
     Parameters
     ----------
-    noise_level: float, optional
-        The mean of the random noise added to the concentration measurements in terms of
-        percent of the signal. Default is 0.
-
     random_seed: int, optional
         The Random seed to generate noises. Default is 0.
 
@@ -55,7 +51,7 @@ class PyrrolidineSNAr(Benchmark):
     ]
     streams = ["tubular_flow"]
 
-    def __init__(self, phenos, noise_level=0, random_seed=0):
+    def __init__(self, phenos, random_seed=0):
         structure_params = self._setup_structure_params()
         physics_params = self._setup_physics_params()
         kinetics_params = self._setup_kinetics_params()
@@ -76,7 +72,6 @@ class PyrrolidineSNAr(Benchmark):
         )
         self._validate_phenos(phenos)
         self.phenos = phenos
-        self.noise_level = noise_level
         self.random_seed = random_seed
     
     def _validate_phenos(self, phenos):
@@ -86,8 +81,6 @@ class PyrrolidineSNAr(Benchmark):
         assert "Flow pattern" in phenos and phenos["Flow pattern"] == "Tubular_Flow", \
             "SNAr reaction is operated with 'Tubular Flow'"
         assert "Mass transport" in phenos and phenos["Mass transport"] == [], \
-            "The tubular flow is well mixed along the radical direction"
-        assert "Mass equilibrium" in phenos and phenos["Mass equilibrium"] == [], \
             "The tubular flow is well mixed along the radical direction"
 
     def _setup_structure_params(self):
@@ -509,13 +502,3 @@ class PyrrolidineSNAr(Benchmark):
             title="Modelled vs Ground-truth Product Concentration Landscapes"
         )
         fig.show()
-
-
-if __name__ == "__main__":
-    pyrrolidine_snar = PyrrolidineSNAr()
-    operation_params = {
-        ("Residence_Time", None, None, None, None): 1,
-        ("Temperature", None, None, None, None): 100,
-        ("Concentration", None, 0, None, 1): 0.4,
-    }
-    print(pyrrolidine_snar.run(operation_params))
