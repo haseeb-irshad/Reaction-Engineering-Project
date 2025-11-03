@@ -42,19 +42,21 @@ class PyrrolidineSNAr(Benchmark):
 
     """
 
-    species = ["dfnb", "prld", "ortho", "para", "bis"]
+    solids = []
+    gases = []
+    streams = ["Continuous_Flow"]
     reactions = [
         "dfnb + prld > ortho",
         "dfnb + prld > para",
         "ortho + prld > bis",
         "para + prld > bis",
     ]
-    streams = ["tubular_flow"]
+    species = ["dfnb", "prld", "ortho", "para", "bis"]
 
     def __init__(self, phenos, random_seed=0):
         structure_params = self._setup_structure_params()
         physics_params = self._setup_physics_params()
-        kinetics_params = self._setup_kinetics_params()
+        reaction_params = self._setup_reaction_params()
         transport_params = self._setup_transport_params()
         operation_params = self._setup_operation_params()
         operation_name2ind = self._setup_operation_name2ind()
@@ -63,7 +65,7 @@ class PyrrolidineSNAr(Benchmark):
         super().__init__(
             structure_params,
             physics_params,
-            kinetics_params,
+            reaction_params,
             transport_params,
             operation_params,
             operation_name2ind,
@@ -91,38 +93,38 @@ class PyrrolidineSNAr(Benchmark):
         physics_params = {}
         return physics_params
 
-    def _setup_kinetics_params(self):
-        kinetics_params = {
-            ("Activation_Energy", None, 0, 0, None): 33.3,  # kJ/mol
-            ("Activation_Energy", None, 0, 1, None): 35.3,  # kJ/mol
-            ("Activation_Energy", None, 0, 2, None): 38.9,  # kJ/mol
-            ("Activation_Energy", None, 0, 3, None): 44.8,  # kJ/mol
-            ("Referenced_Reaction_Rate_Constant", None, 0, 0, None): 0.57900,  # L/mol s
-            ("Referenced_Reaction_Rate_Constant", None, 0, 1, None): 0.02700,  # L/mol s
-            ("Referenced_Reaction_Rate_Constant", None, 0, 2, None): 0.00865,  # L/mol s
-            ("Referenced_Reaction_Rate_Constant", None, 0, 3, None): 0.01630,  # L/mol s
-            ("Stoichiometric_Coefficient", None, None, 0, 0): -1,
-            ("Stoichiometric_Coefficient", None, None, 0, 1): -1,
-            ("Stoichiometric_Coefficient", None, None, 0, 2): 1,
-            ("Stoichiometric_Coefficient", None, None, 1, 0): -1,
-            ("Stoichiometric_Coefficient", None, None, 1, 1): -1,
-            ("Stoichiometric_Coefficient", None, None, 1, 3): 1,
-            ("Stoichiometric_Coefficient", None, None, 2, 1): -1,
-            ("Stoichiometric_Coefficient", None, None, 2, 2): -1,
-            ("Stoichiometric_Coefficient", None, None, 2, 4): 1,
-            ("Stoichiometric_Coefficient", None, None, 3, 1): -1,
-            ("Stoichiometric_Coefficient", None, None, 3, 3): -1,
-            ("Stoichiometric_Coefficient", None, None, 3, 4): 1,
-            ("Partial_Order", None, None, 0, 0): 1,
-            ("Partial_Order", None, None, 0, 1): 1,
-            ("Partial_Order", None, None, 1, 0): 1,
-            ("Partial_Order", None, None, 1, 1): 1,
-            ("Partial_Order", None, None, 2, 1): 1,
-            ("Partial_Order", None, None, 2, 2): 1,
-            ("Partial_Order", None, None, 3, 1): 1,
-            ("Partial_Order", None, None, 3, 3): 1,
+    def _setup_reaction_params(self):
+        reaction_params = {
+            ("Activation_Energy", None, "Continuous_Flow", "dfnb + prld > ortho", None):    33.3, # kJ/mol
+            ("Activation_Energy", None, "Continuous_Flow", "dfnb + prld > para", None):     35.3, # kJ/mol
+            ("Activation_Energy", None, "Continuous_Flow", "ortho + prld > bis", None):     38.9, # kJ/mol
+            ("Activation_Energy", None, "Continuous_Flow", "para + prld > bis", None):      44.8, # kJ/mol
+            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld > ortho", None):    0.57900, # L/mol s
+            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld > para", None):     0.02700, # L/mol s
+            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "ortho + prld > bis", None):     0.00865, # L/mol s
+            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "para + prld > bis", None):      0.01630, # L/mol s
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "dfnb"):  -1,
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "prld"):  -1,
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "ortho"): 1,
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "dfnb"):   -1,
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "prld"):   -1,
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "para"):   1,
+            ("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "ortho"):  -1,
+            ("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "prld"):   -1,
+            ("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "bis"):    1,
+            ("Stoichiometric_Coefficient", None, None, "para + prld > bis", "para"):    -1,
+            ("Stoichiometric_Coefficient", None, None, "para + prld > bis", "prld"):    -1,
+            ("Stoichiometric_Coefficient", None, None, "para + prld > bis", "bis"):     1,
+            ("Partial_Order", None, None, "dfnb + prld > ortho", "dfnb"):   1,
+            ("Partial_Order", None, None, "dfnb + prld > ortho", "prld"):   1,
+            ("Partial_Order", None, None, "dfnb + prld > para", "dfnb"):    1,
+            ("Partial_Order", None, None, "dfnb + prld > para", "prld"):    1,
+            ("Partial_Order", None, None, "ortho + prld > bis", "ortho"):   1,
+            ("Partial_Order", None, None, "ortho + prld > bis", "prld"):    1,
+            ("Partial_Order", None, None, "para + prld > bis", "para"):     1,
+            ("Partial_Order", None, None, "para + prld > bis", "prld"):     1,
         }
-        return kinetics_params
+        return reaction_params
 
     def _setup_transport_params(self):
         transport_params = {}
@@ -130,8 +132,8 @@ class PyrrolidineSNAr(Benchmark):
 
     def _setup_operation_params(self):
         operation_params = {
-            ("Concentration", None, 0, None, 0): 0.2,  # mol/L
-            ("Concentration", None, 0, None, 1): None,  # mol/L
+            ("Concentration", None, "Continuous_Flow", None, "dfnb"): 0.2,  # mol/L
+            ("Concentration", None, "Continuous_Flow", None, "prld"): None,  # mol/L
             ("Temperature", None, None, None, None): None,  # oC
             ("Residence_Time", None, None, None, None): None,  # min
         }
@@ -139,7 +141,7 @@ class PyrrolidineSNAr(Benchmark):
 
     def _setup_operation_name2ind(self):
         operation_name2ind = {
-            "prld_conc": ("Concentration", None, 0, None, 1),
+            "prld_conc": ("Concentration", None, "Continuous_Flow", None, "prld"),
             "temp": ("Temperature", None, None, None, None),
             "t_r": ("Residence_Time", None, None, None, None),
         }
@@ -147,7 +149,7 @@ class PyrrolidineSNAr(Benchmark):
 
     def _setup_measure_ind2name(self):
         measure_ind2name = {
-            ("Concentration", None, 0, None, 2): "outlet_ortho_conc",
+            ("Concentration", None, "Continuous_Flow", None, "ortho"): "outlet_ortho_conc",
         }
         return measure_ind2name
 
@@ -168,40 +170,40 @@ class PyrrolidineSNAr(Benchmark):
         T = params[("Temperature", None, None, None, None)]
         T += 273.15
         c_0 = np.zeros((1, 5), dtype=np.float64)
-        c_0[0, 0] = params[("Concentration", None, 0, None, 0)]
-        c_0[0, 1] = params[("Concentration", None, 0, None, 1)]
+        c_0[0, 0] = params[("Concentration", None, "Continuous_Flow", None, "dfnb")]
+        c_0[0, 1] = params[("Concentration", None, "Continuous_Flow", None, "prld")]
         nu = np.zeros((4, 5), dtype=np.float64)
-        nu[0, 0] = params[("Stoichiometric_Coefficient", None, None, 0, 0)]
-        nu[0, 1] = params[("Stoichiometric_Coefficient", None, None, 0, 1)]
-        nu[0, 2] = params[("Stoichiometric_Coefficient", None, None, 0, 2)]
-        nu[1, 0] = params[("Stoichiometric_Coefficient", None, None, 1, 0)]
-        nu[1, 1] = params[("Stoichiometric_Coefficient", None, None, 1, 1)]
-        nu[1, 3] = params[("Stoichiometric_Coefficient", None, None, 1, 3)]
-        nu[2, 1] = params[("Stoichiometric_Coefficient", None, None, 2, 1)]
-        nu[2, 2] = params[("Stoichiometric_Coefficient", None, None, 2, 2)]
-        nu[2, 4] = params[("Stoichiometric_Coefficient", None, None, 2, 4)]
-        nu[3, 1] = params[("Stoichiometric_Coefficient", None, None, 3, 1)]
-        nu[3, 3] = params[("Stoichiometric_Coefficient", None, None, 3, 3)]
-        nu[3, 4] = params[("Stoichiometric_Coefficient", None, None, 3, 4)]
+        nu[0, 0] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "dfnb")]
+        nu[0, 1] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "prld")]
+        nu[0, 2] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "ortho")]
+        nu[1, 0] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "dfnb")]
+        nu[1, 1] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "prld")]
+        nu[1, 3] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "para")]
+        nu[2, 1] = params[("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "prld")]
+        nu[2, 2] = params[("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "ortho")]
+        nu[2, 4] = params[("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "bis")]
+        nu[3, 1] = params[("Stoichiometric_Coefficient", None, None, "para + prld > bis", "prld")]
+        nu[3, 3] = params[("Stoichiometric_Coefficient", None, None, "para + prld > bis", "para")]
+        nu[3, 4] = params[("Stoichiometric_Coefficient", None, None, "para + prld > bis", "bis")]
         n = np.zeros((4, 5), dtype=np.float64)
-        n[0, 0] = params[("Partial_Order", None, None, 0, 0)]
-        n[0, 1] = params[("Partial_Order", None, None, 0, 1)]
-        n[1, 0] = params[("Partial_Order", None, None, 1, 0)]
-        n[1, 1] = params[("Partial_Order", None, None, 1, 1)]
-        n[2, 1] = params[("Partial_Order", None, None, 2, 1)]
-        n[2, 2] = params[("Partial_Order", None, None, 2, 2)]
-        n[3, 1] = params[("Partial_Order", None, None, 3, 1)]
-        n[3, 3] = params[("Partial_Order", None, None, 3, 3)]
+        n[0, 0] = params[("Partial_Order", None, None, "dfnb + prld > ortho", "dfnb")]
+        n[0, 1] = params[("Partial_Order", None, None, "dfnb + prld > ortho", "prld")]
+        n[1, 0] = params[("Partial_Order", None, None, "dfnb + prld > para", "dfnb")]
+        n[1, 1] = params[("Partial_Order", None, None, "dfnb + prld > para", "prld")]
+        n[2, 1] = params[("Partial_Order", None, None, "ortho + prld > bis", "prld")]
+        n[2, 2] = params[("Partial_Order", None, None, "ortho + prld > bis", "ortho")]
+        n[3, 1] = params[("Partial_Order", None, None, "para + prld > bis", "prld")]
+        n[3, 3] = params[("Partial_Order", None, None, "para + prld > bis", "para")]
         A = np.zeros((1, 4), dtype=np.float64)
-        A[0, 0] = params[("Referenced_Reaction_Rate_Constant", None, 0, 0, None)]
-        A[0, 1] = params[("Referenced_Reaction_Rate_Constant", None, 0, 1, None)]
-        A[0, 2] = params[("Referenced_Reaction_Rate_Constant", None, 0, 2, None)]
-        A[0, 3] = params[("Referenced_Reaction_Rate_Constant", None, 0, 3, None)]
+        A[0, 0] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld > ortho", None)]
+        A[0, 1] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld > para", None)]
+        A[0, 2] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "ortho + prld > bis", None)]
+        A[0, 3] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "para + prld > bis", None)]
         E_a = np.zeros((1, 4), dtype=np.float64)
-        E_a[0, 0] = params[("Activation_Energy", None, 0, 0, None)]
-        E_a[0, 1] = params[("Activation_Energy", None, 0, 1, None)]
-        E_a[0, 2] = params[("Activation_Energy", None, 0, 2, None)]
-        E_a[0, 3] = params[("Activation_Energy", None, 0, 3, None)]
+        E_a[0, 0] = params[("Activation_Energy", None, "Continuous_Flow", "dfnb + prld > ortho", None)]
+        E_a[0, 1] = params[("Activation_Energy", None, "Continuous_Flow", "dfnb + prld > para", None)]
+        E_a[0, 2] = params[("Activation_Energy", None, "Continuous_Flow", "ortho + prld > bis", None)]
+        E_a[0, 3] = params[("Activation_Energy", None, "Continuous_Flow", "para + prld > bis", None)]
         E_a *= 1000
 
         def _derivative(t, c):
@@ -220,27 +222,27 @@ class PyrrolidineSNAr(Benchmark):
         t_eval /= 60
         return t_eval, res.y
 
-    def _run(self, operation_params, kinetics_params, transport_params):
+    def _run(self, operation_params, reaction_params, transport_params):
         assert set(operation_params.keys()).issubset(
-            set(self.operation_params().keys())), "Unknown operation parameters included"
-        assert set(kinetics_params.keys()).issubset(
-            set(self.kinetics_params().keys())), "Unknown kinetics parameters included"
+            set(self._operation_params.keys())), "Unknown operation parameters included"
+        assert set(reaction_params.keys()).issubset(
+            set(self._reaction_params.keys())), "Unknown kinetics parameters included"
         assert set(transport_params.keys()).issubset(
-            set(self.transport_params().keys())), "Unknown mole transport parameters included"
-        params = self.params()
+            set(self._transport_params.keys())), "Unknown mole transport parameters included"
+        params = self._param_list2dict(self.params())
         params.update(operation_params)
-        if kinetics_params is not None:
-            params.update(kinetics_params)
+        if reaction_params is not None:
+            params.update(reaction_params)
         if transport_params is not None:
             params.update(transport_params)
         return self._simulate(params)
 
-    def run(self, operation_params, kinetics_params=None, transport_params=None):
-        if kinetics_params is None:
-            kinetics_params = self.kinetics_params()
+    def run(self, operation_params, reaction_params=None, transport_params=None):
+        if reaction_params is None:
+            reaction_params = self._reaction_params
         if transport_params is None:
-            transport_params = self.transport_params()
-        t, cs = self._run(operation_params, kinetics_params, transport_params)
+            transport_params = self._transport_params
+        t, cs = self._run(operation_params, reaction_params, transport_params)
         return t, cs
 
     def run_dataset(self, dataset):
@@ -252,21 +254,26 @@ class PyrrolidineSNAr(Benchmark):
                 operation_params[ind] = dataset.loc[i, name]
             _, cs = self.run(operation_params)
             for ind, name in self._measure_ind2name.items():
-                res[name].append(cs[ind[-1], -1])
+                res[name].append(cs[self.species.index(ind[-1]), -1])
         for name, val in res.items():
             dataset[name] = val
         return dataset
 
     def generate_lhs_dataset(self, operation_param_ranges, num_points):
-        lhs = LatinHypercube(len(operation_param_ranges), rng=self.random_seed)
+        _operation_param_ranges = {
+            self._operation_name2ind[n]: v for n, v in operation_param_ranges.items()
+        }
+        lhs = LatinHypercube(len(_operation_param_ranges), rng=self.random_seed)
         data = lhs.random(num_points)
-        for i, (_, param_range) in enumerate(operation_param_ranges.items()):
+        for i, (_, param_range) in enumerate(_operation_param_ranges.items()):
             data[:, i] = data[:, i] * (param_range[1] - param_range[0]) + param_range[0]
         dataset = pd.DataFrame(data, columns=list(operation_param_ranges.keys()))
         return self.run_dataset(dataset)
 
     def calibrate(self, cal_param_bounds, dataset):
-        params = self.params()
+        cal_param_bounds = self._param_list2dict(cal_param_bounds)
+        cal_param_bounds = {k: v for k, v in cal_param_bounds.items() if v[0] != v[1]}
+        params = self._param_list2dict(self.params())
         def calc_mse(p):
             mse = 0
             cal_params = {cal_param_ind: _p for cal_param_ind, _p in zip(cal_param_bounds.keys(), p)}
@@ -276,7 +283,7 @@ class PyrrolidineSNAr(Benchmark):
                 params.update(operation_params)
                 t, cs = self._simulate(params)
                 for ind, name in self._measure_ind2name.items():
-                    mse += (cs[ind[-1], -1] - dataset.loc[i, name])**2
+                    mse += (cs[self.species.index(ind[-1]), -1] - dataset.loc[i, name])**2
             return mse
         res = minimize(
             fun=calc_mse, 
@@ -285,10 +292,15 @@ class PyrrolidineSNAr(Benchmark):
             bounds=list(cal_param_bounds.values()),
         )
         cal_params = {ind: round(v.item(), 6) for ind, v in zip(cal_param_bounds.keys(), res.x)}
-        return cal_params
+        return self._param_dict2list(cal_params)
     
-    def plot_simulation_profiles(self, operation_params, kinetics_params=None, transport_params=None):
-        t, cs = self.run(operation_params, kinetics_params, transport_params)
+    def plot_simulation_profiles(self, operation_params, reaction_params=None, transport_params=None):
+        operation_params = self._param_list2dict(operation_params)
+        if reaction_params:
+            reaction_params = self._param_list2dict(reaction_params)
+        if transport_params:
+            transport_params = self._param_list2dict(transport_params)
+        t, cs = self.run(operation_params, reaction_params, transport_params)
         data = {"Time (min)": [], "Concentration (mol/L)": [], "Species": []}
         for i, s in enumerate(self.species):
             for _t, _c in zip(t, cs[i]):
@@ -300,18 +312,23 @@ class PyrrolidineSNAr(Benchmark):
         fig.update_layout(width=800, height=500, title="Concentration Profiles")
         fig.show()
 
-    def plot_product_profile_with_temperatures(self, operation_params, kinetics_params=None, transport_params=None):
+    def plot_product_profile_with_temperatures(self, operation_params, reaction_params=None, transport_params=None):
+        operation_params = self._param_list2dict(operation_params)
+        if reaction_params:
+            reaction_params = self._param_list2dict(reaction_params)
+        if transport_params:
+            transport_params = self._param_list2dict(transport_params)
         temperatures = operation_params[("Temperature", None, None, None, None)]
         residence_time = operation_params[("Residence_Time", None, None, None, None)]
-        prld_conc = operation_params[("Concentration", None, 0, None, 1)]
+        prld_conc = operation_params[("Concentration", None, "Continuous_Flow", None, "prld")]
         data = {"Time (min)": [], "3 Ortho concentration (mol/L)": [], "Temperature (oC)": []}
         for temperature in temperatures:
             _operation_params = {
                 ("Temperature", None, None, None, None): temperature,
                 ("Residence_Time", None, None, None, None): residence_time,
-                ("Concentration", None, 0, None, 1): prld_conc,
+                ("Concentration", None, "Continuous_Flow", None, "prld"): prld_conc,
             }
-            t, cs = self.run(_operation_params, kinetics_params, transport_params)
+            t, cs = self.run(_operation_params, reaction_params, transport_params)
             for _t, _c in zip(t, cs[self.species.index("ortho")]):
                 data["Time (min)"].append(_t)
                 data["3 Ortho concentration (mol/L)"].append(_c)
@@ -321,18 +338,23 @@ class PyrrolidineSNAr(Benchmark):
         fig.update_layout(width=800, height=500, title="Product Concentration Profiles under Varied Temperatures")
         fig.show()
 
-    def plot_product_profile_with_prld_concs(self, operation_params, kinetics_params=None, transport_params=None):
+    def plot_product_profile_with_prld_concs(self, operation_params, reaction_params=None, transport_params=None):
+        operation_params = self._param_list2dict(operation_params)
+        if reaction_params:
+            reaction_params = self._param_list2dict(reaction_params)
+        if transport_params:
+            transport_params = self._param_list2dict(transport_params)
         temperature = operation_params[("Temperature", None, None, None, None)]
         residence_time = operation_params[("Residence_Time", None, None, None, None)]
-        prld_concs = operation_params[("Concentration", None, 0, None, 1)]
+        prld_concs = operation_params[("Concentration", None, "Continuous_Flow", None, "prld")]
         data = {"Time (min)": [], "3 Ortho concentration (mol/L)": [], "Pyrrolidine concentration (mol/L)": []}
         for prld_conc in prld_concs:
             _operation_params = {
                 ("Temperature", None, None, None, None): temperature,
                 ("Residence_Time", None, None, None, None): residence_time,
-                ("Concentration", None, 0, None, 1): prld_conc,
+                ("Concentration", None, "Continuous_Flow", None, "prld"): prld_conc,
             }
-            t, cs = self.run(_operation_params, kinetics_params, transport_params)
+            t, cs = self.run(_operation_params, reaction_params, transport_params)
             for _t, _c in zip(t, cs[self.species.index("ortho")]):
                 data["Time (min)"].append(_t)
                 data["3 Ortho concentration (mol/L)"].append(_c)
@@ -342,10 +364,15 @@ class PyrrolidineSNAr(Benchmark):
         fig.update_layout(width=900, height=500, title="Product Concentration Profiles under Varied Pyrrolidine Concentrations")
         fig.show()
     
-    def plot_product_conc_landscapes(self, operation_params, kinetics_params=None, transport_params=None):
+    def plot_product_conc_landscapes(self, operation_params, reaction_params=None, transport_params=None):
+        operation_params = self._param_list2dict(operation_params)
+        if reaction_params:
+            reaction_params = self._param_list2dict(reaction_params)
+        if transport_params:
+            transport_params = self._param_list2dict(transport_params)
         temperatures = operation_params[("Temperature", None, None, None, None)]
         residence_times = operation_params[("Residence_Time", None, None, None, None)]
-        prld_concs = operation_params[("Concentration", None, 0, None, 1)]
+        prld_concs = operation_params[("Concentration", None, "Continuous_Flow", None, "prld")]
         shape = (len(residence_times), len(prld_concs))
         
         data = []
@@ -361,9 +388,9 @@ class PyrrolidineSNAr(Benchmark):
                     _operation_params = {
                         ("Temperature", None, None, None, None): temperature,
                         ("Residence_Time", None, None, None, None): residence_time,
-                        ("Concentration", None, 0, None, 1): prld_conc,
+                        ("Concentration", None, "Continuous_Flow", None, "prld"): prld_conc,
                     }
-                    t, cs = self.run(_operation_params, kinetics_params, transport_params)
+                    t, cs = self.run(_operation_params, reaction_params, transport_params)
                     d["Residence time (min)"].append(residence_time)
                     d["2 Pyrrolidine concentration (mol/L)"].append(prld_conc)
                     d["3 Ortho concentration (mol/L)"].append(cs[2][-1])
@@ -410,14 +437,23 @@ class PyrrolidineSNAr(Benchmark):
     def plot_product_conc_landscape_with_ground_truth(
             self, 
             operation_params, 
-            cal_kinetics_params=None, 
+            cal_reaction_params=None, 
             cal_transport_params=None,
-            kinetics_params=None, 
+            reaction_params=None, 
             transport_params=None
         ):
+        operation_params = self._param_list2dict(operation_params)
+        if reaction_params:
+            reaction_params = self._param_list2dict(reaction_params)
+        if transport_params:
+            transport_params = self._param_list2dict(transport_params)
+        if cal_reaction_params:
+            cal_reaction_params = self._param_list2dict(cal_reaction_params)
+        if cal_transport_params:
+            cal_transport_params = self._param_list2dict(cal_transport_params)
         temperature = operation_params[("Temperature", None, None, None, None)]
         residence_times = operation_params[("Residence_Time", None, None, None, None)]
-        prld_concs = operation_params[("Concentration", None, 0, None, 1)]
+        prld_concs = operation_params[("Concentration", None, "Continuous_Flow", None, "prld")]
         shape = (len(residence_times), len(prld_concs))
 
         gt_data = {
@@ -431,9 +467,9 @@ class PyrrolidineSNAr(Benchmark):
                 _operation_params = {
                     ("Temperature", None, None, None, None): temperature,
                     ("Residence_Time", None, None, None, None): residence_time,
-                    ("Concentration", None, 0, None, 1): prld_conc,
+                    ("Concentration", None, "Continuous_Flow", None, "prld"): prld_conc,
                 }
-                t, cs = self.run(_operation_params, kinetics_params, transport_params)
+                t, cs = self.run(_operation_params, reaction_params, transport_params)
                 gt_data["Residence time (min)"].append(residence_time)
                 gt_data["2 Pyrrolidine concentration (mol/L)"].append(prld_conc)
                 gt_data["3 Ortho concentration (mol/L)"].append(cs[2][-1])
@@ -452,9 +488,9 @@ class PyrrolidineSNAr(Benchmark):
                 _operation_params = {
                     ("Temperature", None, None, None, None): temperature,
                     ("Residence_Time", None, None, None, None): residence_time,
-                    ("Concentration", None, 0, None, 1): prld_conc,
+                    ("Concentration", None, "Continuous_Flow", None, "prld"): prld_conc,
                 }
-                t, cs = self.run(_operation_params, cal_kinetics_params, cal_transport_params)
+                t, cs = self.run(_operation_params, cal_reaction_params, cal_transport_params)
                 cal_data["Residence time (min)"].append(residence_time)
                 cal_data["2 Pyrrolidine concentration (mol/L)"].append(prld_conc)
                 cal_data["3 Ortho concentration (mol/L)"].append(cs[2][-1])
