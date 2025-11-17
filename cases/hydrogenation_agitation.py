@@ -268,8 +268,8 @@ def _simulate(params, phenos):
     t_eval /= 60
     return t_eval, res.y
 
-def calc_mse(p, params, cal_param_bounds, phenos, dataset):
-    mse = 0
+def calc_se(p, params, cal_param_bounds, phenos, dataset):
+    se = 0
     cal_params = {cal_param_ind: _p for cal_param_ind, _p in zip(cal_param_bounds.keys(), p)}
     params.update(cal_params)
     for i in range(len(dataset)):
@@ -278,12 +278,12 @@ def calc_mse(p, params, cal_param_bounds, phenos, dataset):
         t, ms = _simulate(params, phenos)
         for ind, name in measure_ind2name.items():
             if ind[0] == "Mass":
-                mse += (ms[Hydrogenation.species.index(ind[-1]), -1] - dataset.loc[i, name])**2
+                se += (ms[Hydrogenation.species.index(ind[-1]), -1] - dataset.loc[i, name])**2
             if ind == ("Mass_Gas_Used", "Gas_Flow", None, None, "H2"):
-                mse += (ms[-2, -1] - dataset.loc[i, name])**2
+                se += (ms[-2, -1] - dataset.loc[i, name])**2
             if ind == ("Mass_Solid", "Solid_Feedstock", None, None, "RDY"):
-                mse += (ms[-1, -1] - dataset.loc[i, name])**2
-    return mse
+                se += (ms[-1, -1] - dataset.loc[i, name])**2
+    return se
 
 
 class Hydrogenation(Benchmark):
@@ -606,10 +606,10 @@ class Hydrogenation(Benchmark):
         cal_param_bounds = self._param_list2dict(cal_param_bounds)
         params = self._param_list2dict(self.params())
         from functools import partial
-        partial_calc_mse = partial(
-            calc_mse, params=params, cal_param_bounds=cal_param_bounds, phenos=self.phenos, dataset=dataset)
-        res = differential_evolution(func=partial_calc_mse, bounds=list(cal_param_bounds.values(
-        )), updating='deferred', workers=4, popsize=4, maxiter=20, disp=True, polish=False, rng=0)
+        partial_calc_se = partial(
+            calc_se, params=params, cal_param_bounds=cal_param_bounds, phenos=self.phenos, dataset=dataset)
+        res = differential_evolution(func=partial_calc_se, bounds=list(cal_param_bounds.values(
+        )), updating='deferred', workers=4, popsize=4, maxiter=8, disp=True, polish=False, rng=0)
         cal_params = {ind: round(v.item(), 6) for ind, v in zip(cal_param_bounds.keys(), res.x)}
         return self._param_dict2list(cal_params)
     
@@ -886,6 +886,11 @@ class Hydrogenation(Benchmark):
             "Experiment": dataset["h2_used"].tolist(), 
             "Prediction": pred_dataset["h2_used"].tolist()
         }
+        se = ((dataset["m_rdet"] - pred_dataset["m_rdet"]) ** 2).sum()
+        se += ((dataset["m_rdy_left"] - pred_dataset["m_rdy_left"]) ** 2).sum()
+        se += ((dataset["m_dimer"] - pred_dataset["m_dimer"]) ** 2).sum()
+        se += ((dataset["h2_used"] - pred_dataset["h2_used"]) ** 2).sum()
+        print(f"Squared error: {se:.6f}")
     
         fig = make_subplots(rows=2, cols=2, subplot_titles=("RDEt (kg)", "Left RDY (kg)", "Dimer (kg)", "Used H2 (kg)"))
         fig1 = px.scatter(pd.DataFrame(rdet_data), x="Experiment", y="Prediction")
