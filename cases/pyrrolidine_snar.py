@@ -46,10 +46,10 @@ class PyrrolidineSNAr(Benchmark):
     gases = []
     streams = ["Continuous_Flow"]
     reactions = [
-        "dfnb + prld > ortho",
-        "dfnb + prld > para",
-        "ortho + prld > bis",
-        "para + prld > bis",
+        "dfnb + prld ⟶ ortho",
+        "dfnb + prld ⟶ para",
+        "ortho + prld ⟶ bis",
+        "para + prld ⟶ bis",
     ]
     species = ["dfnb", "prld", "ortho", "para", "bis"]
 
@@ -95,34 +95,34 @@ class PyrrolidineSNAr(Benchmark):
 
     def _setup_reaction_params(self):
         reaction_params = {
-            ("Activation_Energy", None, "Continuous_Flow", "dfnb + prld > ortho", None):    33.3, # kJ/mol
-            ("Activation_Energy", None, "Continuous_Flow", "dfnb + prld > para", None):     35.3, # kJ/mol
-            ("Activation_Energy", None, "Continuous_Flow", "ortho + prld > bis", None):     38.9, # kJ/mol
-            ("Activation_Energy", None, "Continuous_Flow", "para + prld > bis", None):      44.8, # kJ/mol
-            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld > ortho", None):    0.57900, # L/mol s
-            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld > para", None):     0.02700, # L/mol s
-            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "ortho + prld > bis", None):     0.00865, # L/mol s
-            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "para + prld > bis", None):      0.01630, # L/mol s
-            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "dfnb"):  -1,
-            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "prld"):  -1,
-            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "ortho"): 1,
-            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "dfnb"):   -1,
-            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "prld"):   -1,
-            ("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "para"):   1,
-            ("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "ortho"):  -1,
-            ("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "prld"):   -1,
-            ("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "bis"):    1,
-            ("Stoichiometric_Coefficient", None, None, "para + prld > bis", "para"):    -1,
-            ("Stoichiometric_Coefficient", None, None, "para + prld > bis", "prld"):    -1,
-            ("Stoichiometric_Coefficient", None, None, "para + prld > bis", "bis"):     1,
-            ("Partial_Order", None, None, "dfnb + prld > ortho", "dfnb"):   1,
-            ("Partial_Order", None, None, "dfnb + prld > ortho", "prld"):   1,
-            ("Partial_Order", None, None, "dfnb + prld > para", "dfnb"):    1,
-            ("Partial_Order", None, None, "dfnb + prld > para", "prld"):    1,
-            ("Partial_Order", None, None, "ortho + prld > bis", "ortho"):   1,
-            ("Partial_Order", None, None, "ortho + prld > bis", "prld"):    1,
-            ("Partial_Order", None, None, "para + prld > bis", "para"):     1,
-            ("Partial_Order", None, None, "para + prld > bis", "prld"):     1,
+            ("Activation_Energy", None, "Continuous_Flow", "dfnb + prld ⟶ ortho", None):    33.3, # kJ/mol
+            ("Activation_Energy", None, "Continuous_Flow", "dfnb + prld ⟶ para", None):     35.3, # kJ/mol
+            ("Activation_Energy", None, "Continuous_Flow", "ortho + prld ⟶ bis", None):     38.9, # kJ/mol
+            ("Activation_Energy", None, "Continuous_Flow", "para + prld ⟶ bis", None):      44.8, # kJ/mol
+            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld ⟶ ortho", None):    0.57900, # L/mol s
+            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld ⟶ para", None):     0.02700, # L/mol s
+            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "ortho + prld ⟶ bis", None):     0.00865, # L/mol s
+            ("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "para + prld ⟶ bis", None):      0.01630, # L/mol s
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ ortho", "dfnb"):  -1,
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ ortho", "prld"):  -1,
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ ortho", "ortho"): 1,
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ para", "dfnb"):   -1,
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ para", "prld"):   -1,
+            ("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ para", "para"):   1,
+            ("Stoichiometric_Coefficient", None, None, "ortho + prld ⟶ bis", "ortho"):  -1,
+            ("Stoichiometric_Coefficient", None, None, "ortho + prld ⟶ bis", "prld"):   -1,
+            ("Stoichiometric_Coefficient", None, None, "ortho + prld ⟶ bis", "bis"):    1,
+            ("Stoichiometric_Coefficient", None, None, "para + prld ⟶ bis", "para"):    -1,
+            ("Stoichiometric_Coefficient", None, None, "para + prld ⟶ bis", "prld"):    -1,
+            ("Stoichiometric_Coefficient", None, None, "para + prld ⟶ bis", "bis"):     1,
+            ("Partial_Order", None, None, "dfnb + prld ⟶ ortho", "dfnb"):   1,
+            ("Partial_Order", None, None, "dfnb + prld ⟶ ortho", "prld"):   1,
+            ("Partial_Order", None, None, "dfnb + prld ⟶ para", "dfnb"):    1,
+            ("Partial_Order", None, None, "dfnb + prld ⟶ para", "prld"):    1,
+            ("Partial_Order", None, None, "ortho + prld ⟶ bis", "ortho"):   1,
+            ("Partial_Order", None, None, "ortho + prld ⟶ bis", "prld"):    1,
+            ("Partial_Order", None, None, "para + prld ⟶ bis", "para"):     1,
+            ("Partial_Order", None, None, "para + prld ⟶ bis", "prld"):     1,
         }
         return reaction_params
 
@@ -173,37 +173,37 @@ class PyrrolidineSNAr(Benchmark):
         c_0[0, 0] = params[("Concentration", None, "Continuous_Flow", None, "dfnb")]
         c_0[0, 1] = params[("Concentration", None, "Continuous_Flow", None, "prld")]
         nu = np.zeros((4, 5), dtype=np.float64)
-        nu[0, 0] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "dfnb")]
-        nu[0, 1] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "prld")]
-        nu[0, 2] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > ortho", "ortho")]
-        nu[1, 0] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "dfnb")]
-        nu[1, 1] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "prld")]
-        nu[1, 3] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld > para", "para")]
-        nu[2, 1] = params[("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "prld")]
-        nu[2, 2] = params[("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "ortho")]
-        nu[2, 4] = params[("Stoichiometric_Coefficient", None, None, "ortho + prld > bis", "bis")]
-        nu[3, 1] = params[("Stoichiometric_Coefficient", None, None, "para + prld > bis", "prld")]
-        nu[3, 3] = params[("Stoichiometric_Coefficient", None, None, "para + prld > bis", "para")]
-        nu[3, 4] = params[("Stoichiometric_Coefficient", None, None, "para + prld > bis", "bis")]
+        nu[0, 0] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ ortho", "dfnb")]
+        nu[0, 1] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ ortho", "prld")]
+        nu[0, 2] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ ortho", "ortho")]
+        nu[1, 0] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ para", "dfnb")]
+        nu[1, 1] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ para", "prld")]
+        nu[1, 3] = params[("Stoichiometric_Coefficient", None, None, "dfnb + prld ⟶ para", "para")]
+        nu[2, 1] = params[("Stoichiometric_Coefficient", None, None, "ortho + prld ⟶ bis", "prld")]
+        nu[2, 2] = params[("Stoichiometric_Coefficient", None, None, "ortho + prld ⟶ bis", "ortho")]
+        nu[2, 4] = params[("Stoichiometric_Coefficient", None, None, "ortho + prld ⟶ bis", "bis")]
+        nu[3, 1] = params[("Stoichiometric_Coefficient", None, None, "para + prld ⟶ bis", "prld")]
+        nu[3, 3] = params[("Stoichiometric_Coefficient", None, None, "para + prld ⟶ bis", "para")]
+        nu[3, 4] = params[("Stoichiometric_Coefficient", None, None, "para + prld ⟶ bis", "bis")]
         n = np.zeros((4, 5), dtype=np.float64)
-        n[0, 0] = params[("Partial_Order", None, None, "dfnb + prld > ortho", "dfnb")]
-        n[0, 1] = params[("Partial_Order", None, None, "dfnb + prld > ortho", "prld")]
-        n[1, 0] = params[("Partial_Order", None, None, "dfnb + prld > para", "dfnb")]
-        n[1, 1] = params[("Partial_Order", None, None, "dfnb + prld > para", "prld")]
-        n[2, 1] = params[("Partial_Order", None, None, "ortho + prld > bis", "prld")]
-        n[2, 2] = params[("Partial_Order", None, None, "ortho + prld > bis", "ortho")]
-        n[3, 1] = params[("Partial_Order", None, None, "para + prld > bis", "prld")]
-        n[3, 3] = params[("Partial_Order", None, None, "para + prld > bis", "para")]
+        n[0, 0] = params[("Partial_Order", None, None, "dfnb + prld ⟶ ortho", "dfnb")]
+        n[0, 1] = params[("Partial_Order", None, None, "dfnb + prld ⟶ ortho", "prld")]
+        n[1, 0] = params[("Partial_Order", None, None, "dfnb + prld ⟶ para", "dfnb")]
+        n[1, 1] = params[("Partial_Order", None, None, "dfnb + prld ⟶ para", "prld")]
+        n[2, 1] = params[("Partial_Order", None, None, "ortho + prld ⟶ bis", "prld")]
+        n[2, 2] = params[("Partial_Order", None, None, "ortho + prld ⟶ bis", "ortho")]
+        n[3, 1] = params[("Partial_Order", None, None, "para + prld ⟶ bis", "prld")]
+        n[3, 3] = params[("Partial_Order", None, None, "para + prld ⟶ bis", "para")]
         A = np.zeros((1, 4), dtype=np.float64)
-        A[0, 0] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld > ortho", None)]
-        A[0, 1] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld > para", None)]
-        A[0, 2] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "ortho + prld > bis", None)]
-        A[0, 3] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "para + prld > bis", None)]
+        A[0, 0] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld ⟶ ortho", None)]
+        A[0, 1] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "dfnb + prld ⟶ para", None)]
+        A[0, 2] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "ortho + prld ⟶ bis", None)]
+        A[0, 3] = params[("Referenced_Reaction_Rate_Constant", None, "Continuous_Flow", "para + prld ⟶ bis", None)]
         E_a = np.zeros((1, 4), dtype=np.float64)
-        E_a[0, 0] = params[("Activation_Energy", None, "Continuous_Flow", "dfnb + prld > ortho", None)]
-        E_a[0, 1] = params[("Activation_Energy", None, "Continuous_Flow", "dfnb + prld > para", None)]
-        E_a[0, 2] = params[("Activation_Energy", None, "Continuous_Flow", "ortho + prld > bis", None)]
-        E_a[0, 3] = params[("Activation_Energy", None, "Continuous_Flow", "para + prld > bis", None)]
+        E_a[0, 0] = params[("Activation_Energy", None, "Continuous_Flow", "dfnb + prld ⟶ ortho", None)]
+        E_a[0, 1] = params[("Activation_Energy", None, "Continuous_Flow", "dfnb + prld ⟶ para", None)]
+        E_a[0, 2] = params[("Activation_Energy", None, "Continuous_Flow", "ortho + prld ⟶ bis", None)]
+        E_a[0, 3] = params[("Activation_Energy", None, "Continuous_Flow", "para + prld ⟶ bis", None)]
         E_a *= 1000
 
         def _derivative(t, c):
