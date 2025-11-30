@@ -65,80 +65,80 @@ def _set_params(params):
     ρ_s[0] = params[("Density_Solid", "Solid_Feedstock", None, None, None)]
 
     nu = np.zeros((10, 13), dtype=np.float64)
-    nu[0, 8] = params[("Stoichiometric_Coefficient", None, None, "H2 + cat2 > 2 cat-H", "H2")]
-    nu[0, 9] = params[("Stoichiometric_Coefficient", None, None, "H2 + cat2 > 2 cat-H", "cat2")]
-    nu[0, 10] = params[("Stoichiometric_Coefficient", None, None, "H2 + cat2 > 2 cat-H", "cat-H")]
-    nu[1, 8] = params[("Stoichiometric_Coefficient", None, None, "2 cat-H > H2 + cat2", "H2")]
-    nu[1, 9] = params[("Stoichiometric_Coefficient", None, None, "2 cat-H > H2 + cat2", "cat2")]
-    nu[1, 10] = params[("Stoichiometric_Coefficient", None, None, "2 cat-H > H2 + cat2", "cat-H")]
-    nu[2, 2] = params[("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H > RYE + cat2", "RDY")]
-    nu[2, 3] = params[("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H > RYE + cat2", "RYE")]
-    nu[2, 9] = params[("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H > RYE + cat2", "cat2")]
-    nu[2, 10] = params[("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H > RYE + cat2", "cat-H")]
-    nu[3, 3] = params[("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H > RYA + cat2", "RYE")]
-    nu[3, 4] = params[("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H > RYA + cat2", "RYA")]
-    nu[3, 9] = params[("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H > RYA + cat2", "cat2")]
-    nu[3, 10] = params[("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H > RYA + cat2", "cat-H")]
-    nu[4, 4] = params[("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H > REA + cat2", "RYA")]
-    nu[4, 5] = params[("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H > REA + cat2", "REA")]
-    nu[4, 9] = params[("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H > REA + cat2", "cat2")]
-    nu[4, 10] = params[("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H > REA + cat2", "cat-H")]
-    nu[5, 5] = params[("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H > RDEt + cat2", "REA")]
-    nu[5, 6] = params[("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H > RDEt + cat2", "RDEt")]
-    nu[5, 9] = params[("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H > RDEt + cat2", "cat2")]
-    nu[5, 10] = params[("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H > RDEt + cat2", "cat-H")]
-    nu[6, 6] = params[("Stoichiometric_Coefficient", None, None, "RDEt + catX > catX-RDEt", "RDEt")]
-    nu[6, 11] = params[("Stoichiometric_Coefficient", None, None, "RDEt + catX > catX-RDEt", "catX")]
-    nu[6, 12] = params[("Stoichiometric_Coefficient", None, None, "RDEt + catX > catX-RDEt", "catX-RDEt")]
-    nu[7, 6] = params[("Stoichiometric_Coefficient", None, None, "catX-RDEt > RDEt + catX", "catX-RDEt")]
-    nu[7, 11] = params[("Stoichiometric_Coefficient", None, None, "catX-RDEt > RDEt + catX", "catX-RDEt")]
-    nu[7, 12] = params[("Stoichiometric_Coefficient", None, None, "catX-RDEt > RDEt + catX", "catX-RDEt")]
-    nu[8, 3] = params[("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt > dimer + catX", "RYE")]
-    nu[8, 7] = params[("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt > dimer + catX", "dimer")]
-    nu[8, 11] = params[("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt > dimer + catX", "catX")]
-    nu[8, 12] = params[("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt > dimer + catX", "catX-RDEt")]
-    nu[9, 5] = params[("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "REA")]
-    nu[9, 7] = params[("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "dimer")]
-    nu[9, 8] = params[("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "H2")]
-    nu[9, 11] = params[("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "catX")]
-    nu[9, 12] = params[("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "catX-RDEt")]
+    nu[0, 8] = params[("Stoichiometric_Coefficient", None, None, "H2 + cat2 ⟶ 2 cat-H", "H2")]
+    nu[0, 9] = params[("Stoichiometric_Coefficient", None, None, "H2 + cat2 ⟶ 2 cat-H", "cat2")]
+    nu[0, 10] = params[("Stoichiometric_Coefficient", None, None, "H2 + cat2 ⟶ 2 cat-H", "cat-H")]
+    nu[1, 8] = params[("Stoichiometric_Coefficient", None, None, "2 cat-H ⟶ H2 + cat2", "H2")]
+    nu[1, 9] = params[("Stoichiometric_Coefficient", None, None, "2 cat-H ⟶ H2 + cat2", "cat2")]
+    nu[1, 10] = params[("Stoichiometric_Coefficient", None, None, "2 cat-H ⟶ H2 + cat2", "cat-H")]
+    nu[2, 2] = params[("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "RDY")]
+    nu[2, 3] = params[("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "RYE")]
+    nu[2, 9] = params[("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "cat2")]
+    nu[2, 10] = params[("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "cat-H")]
+    nu[3, 3] = params[("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "RYE")]
+    nu[3, 4] = params[("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "RYA")]
+    nu[3, 9] = params[("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "cat2")]
+    nu[3, 10] = params[("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "cat-H")]
+    nu[4, 4] = params[("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "RYA")]
+    nu[4, 5] = params[("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "REA")]
+    nu[4, 9] = params[("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "cat2")]
+    nu[4, 10] = params[("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "cat-H")]
+    nu[5, 5] = params[("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "REA")]
+    nu[5, 6] = params[("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "RDEt")]
+    nu[5, 9] = params[("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "cat2")]
+    nu[5, 10] = params[("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "cat-H")]
+    nu[6, 6] = params[("Stoichiometric_Coefficient", None, None, "RDEt + catX ⟶ catX-RDEt", "RDEt")]
+    nu[6, 11] = params[("Stoichiometric_Coefficient", None, None, "RDEt + catX ⟶ catX-RDEt", "catX")]
+    nu[6, 12] = params[("Stoichiometric_Coefficient", None, None, "RDEt + catX ⟶ catX-RDEt", "catX-RDEt")]
+    nu[7, 6] = params[("Stoichiometric_Coefficient", None, None, "catX-RDEt ⟶ RDEt + catX", "catX-RDEt")]
+    nu[7, 11] = params[("Stoichiometric_Coefficient", None, None, "catX-RDEt ⟶ RDEt + catX", "catX-RDEt")]
+    nu[7, 12] = params[("Stoichiometric_Coefficient", None, None, "catX-RDEt ⟶ RDEt + catX", "catX-RDEt")]
+    nu[8, 3] = params[("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "RYE")]
+    nu[8, 7] = params[("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "dimer")]
+    nu[8, 11] = params[("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "catX")]
+    nu[8, 12] = params[("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "catX-RDEt")]
+    nu[9, 5] = params[("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "REA")]
+    nu[9, 7] = params[("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "dimer")]
+    nu[9, 8] = params[("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "H2")]
+    nu[9, 11] = params[("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "catX")]
+    nu[9, 12] = params[("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "catX-RDEt")]
     n = np.zeros((10, 13), dtype=np.float64)
-    n[0, 8] = params[("Partial_Order", None, None, "H2 + cat2 > 2 cat-H", "H2")]
-    n[0, 9] = params[("Partial_Order", None, None, "H2 + cat2 > 2 cat-H", "cat2")]
-    n[1, 10] = params[("Partial_Order", None, None, "2 cat-H > H2 + cat2", "cat-H")]
-    n[2, 2] = params[("Partial_Order", None, None, "RDY + 2 cat-H > RYE + cat2", "RDY")]
-    n[2, 10] = params[("Partial_Order", None, None, "RDY + 2 cat-H > RYE + cat2", "cat-H")]
-    n[3, 3] = params[("Partial_Order", None, None, "RYE + 2 cat-H > RYA + cat2", "RYE")]
-    n[3, 10] = params[("Partial_Order", None, None, "RYE + 2 cat-H > RYA + cat2", "cat-H")]
-    n[4, 4] = params[("Partial_Order", None, None, "RYA + 2 cat-H > REA + cat2", "RYA")]
-    n[4, 10] = params[("Partial_Order", None, None, "RYA + 2 cat-H > REA + cat2", "cat-H")]
-    n[5, 5] = params[("Partial_Order", None, None, "REA + 2 cat-H > RDEt + cat2", "REA")]
-    n[5, 10] = params[("Partial_Order", None, None, "REA + 2 cat-H > RDEt + cat2", "cat-H")]
-    n[6, 6] = params[("Partial_Order", None, None, "RDEt + catX > catX-RDEt", "RDEt")]
-    n[6, 11] = params[("Partial_Order", None, None, "RDEt + catX > catX-RDEt", "catX")]
-    n[7, 12] = params[("Partial_Order", None, None, "catX-RDEt > RDEt + catX", "catX-RDEt")]
-    n[8, 3] = params[("Partial_Order", None, None, "RYE + catX-RDEt > dimer + catX", "RYE")]
-    n[8, 12] = params[("Partial_Order", None, None, "RYE + catX-RDEt > dimer + catX", "catX-RDEt")]
-    n[9, 5] = params[("Partial_Order", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "REA")]
-    n[9, 12] = params[("Partial_Order", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "catX-RDEt")]
+    n[0, 8] = params[("Partial_Order", None, None, "H2 + cat2 ⟶ 2 cat-H", "H2")]
+    n[0, 9] = params[("Partial_Order", None, None, "H2 + cat2 ⟶ 2 cat-H", "cat2")]
+    n[1, 10] = params[("Partial_Order", None, None, "2 cat-H ⟶ H2 + cat2", "cat-H")]
+    n[2, 2] = params[("Partial_Order", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "RDY")]
+    n[2, 10] = params[("Partial_Order", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "cat-H")]
+    n[3, 3] = params[("Partial_Order", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "RYE")]
+    n[3, 10] = params[("Partial_Order", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "cat-H")]
+    n[4, 4] = params[("Partial_Order", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "RYA")]
+    n[4, 10] = params[("Partial_Order", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "cat-H")]
+    n[5, 5] = params[("Partial_Order", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "REA")]
+    n[5, 10] = params[("Partial_Order", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "cat-H")]
+    n[6, 6] = params[("Partial_Order", None, None, "RDEt + catX ⟶ catX-RDEt", "RDEt")]
+    n[6, 11] = params[("Partial_Order", None, None, "RDEt + catX ⟶ catX-RDEt", "catX")]
+    n[7, 12] = params[("Partial_Order", None, None, "catX-RDEt ⟶ RDEt + catX", "catX-RDEt")]
+    n[8, 3] = params[("Partial_Order", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "RYE")]
+    n[8, 12] = params[("Partial_Order", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "catX-RDEt")]
+    n[9, 5] = params[("Partial_Order", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "REA")]
+    n[9, 12] = params[("Partial_Order", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "catX-RDEt")]
     k_ref = np.zeros((1, 10), dtype=np.float64)
-    k_ref[0, 2] = params[("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RDY + 2 cat-H > RYE + cat2", None)]
-    k_ref[0, 4] = params[("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RYA + 2 cat-H > REA + cat2", None)]
-    k_ref[0, 8] = params[("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RYE + catX-RDEt > dimer + catX", None)]
-    k_ref[0, 9] = params[("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "REA + catX-RDEt > 2 H2 + dimer + catX", None)]
+    k_ref[0, 2] = params[("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RDY + 2 cat-H ⟶ RYE + cat2", None)]
+    k_ref[0, 4] = params[("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RYA + 2 cat-H ⟶ REA + cat2", None)]
+    k_ref[0, 8] = params[("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RYE + catX-RDEt ⟶ dimer + catX", None)]
+    k_ref[0, 9] = params[("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", None)]
     E_a = np.zeros((1, 10), dtype=np.float64)
-    E_a[0, 2] = params[("Activation_Energy", None, "Batch_Feed", "RDY + 2 cat-H > RYE + cat2", None)]
-    E_a[0, 4] = params[("Activation_Energy", None, "Batch_Feed", "RYA + 2 cat-H > REA + cat2", None)]
-    E_a[0, 8] = params[("Activation_Energy", None, "Batch_Feed", "RYE + catX-RDEt > dimer + catX", None)]
-    E_a[0, 9] = params[("Activation_Energy", None, "Batch_Feed", "REA + catX-RDEt > 2 H2 + dimer + catX", None)]
+    E_a[0, 2] = params[("Activation_Energy", None, "Batch_Feed", "RDY + 2 cat-H ⟶ RYE + cat2", None)]
+    E_a[0, 4] = params[("Activation_Energy", None, "Batch_Feed", "RYA + 2 cat-H ⟶ REA + cat2", None)]
+    E_a[0, 8] = params[("Activation_Energy", None, "Batch_Feed", "RYE + catX-RDEt ⟶ dimer + catX", None)]
+    E_a[0, 9] = params[("Activation_Energy", None, "Batch_Feed", "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", None)]
     E_a *= 1000
     k = np.zeros((1, 10), dtype=np.float64)
-    k[0, 0] = params[("Rate_Constant", None, "Batch_Feed", "H2 + cat2 > 2 cat-H", None)]
-    k[0, 1] = params[("Rate_Constant", None, "Batch_Feed", "2 cat-H > H2 + cat2", None)]
-    k[0, 3] = params[("Rate_Constant", None, "Batch_Feed", "RYE + 2 cat-H > RYA + cat2", None)]
-    k[0, 5] = params[("Rate_Constant", None, "Batch_Feed", "REA + 2 cat-H > RDEt + cat2", None)]
-    k[0, 6] = params[("Rate_Constant", None, "Batch_Feed", "RDEt + catX > catX-RDEt", None)]
-    k[0, 7] = params[("Rate_Constant", None, "Batch_Feed", "catX-RDEt > RDEt + catX", None)]
+    k[0, 0] = params[("Rate_Constant", None, "Batch_Feed", "H2 + cat2 ⟶ 2 cat-H", None)]
+    k[0, 1] = params[("Rate_Constant", None, "Batch_Feed", "2 cat-H ⟶ H2 + cat2", None)]
+    k[0, 3] = params[("Rate_Constant", None, "Batch_Feed", "RYE + 2 cat-H ⟶ RYA + cat2", None)]
+    k[0, 5] = params[("Rate_Constant", None, "Batch_Feed", "REA + 2 cat-H ⟶ RDEt + cat2", None)]
+    k[0, 6] = params[("Rate_Constant", None, "Batch_Feed", "RDEt + catX ⟶ catX-RDEt", None)]
+    k[0, 7] = params[("Rate_Constant", None, "Batch_Feed", "catX-RDEt ⟶ RDEt + catX", None)]
     
     k_Sa_D = np.zeros((1, 1, 13), dtype=np.float64)
     k_Sa_D[0, 0, 2] = params[("Solid-Liquid_Volumetric_Mass_Transfer_Coefficient_D", "Solid_Feedstock", "Batch_Feed", None, "RDY")]
@@ -173,34 +173,34 @@ def _derivative(t, m, R, t_b, T, P, N, m_0, m_s_0, x_g, M, ρ, ρ_s, nu, n, k_re
 
     # reaction
     r_r = np.zeros((1, 10), dtype=np.float64)
-    # stream: Batch stream, reaction: H2 + cat2 > 2 cat-H
+    # stream: Batch stream, reaction: H2 + cat2 ⟶ 2 cat-H
     r_r[0, 0] = k[0, 0] * np.prod(c[0] ** n[0])
 
-    # stream: Batch stream, reaction: 2 cat-H > H2 + cat2
+    # stream: Batch stream, reaction: 2 cat-H ⟶ H2 + cat2
     r_r[0, 1] = k[0, 1] * np.prod(c[0] ** n[1])
 
-    # stream: Batch stream, reaction: RDY + 2 cat-H > RYE + cat2
+    # stream: Batch stream, reaction: RDY + 2 cat-H ⟶ RYE + cat2
     r_r[0, 2] = k_ref[0, 2] * np.exp(- E_a[0, 2] / R * (1 / T - 1 / 293.15)) * np.prod(c[0] ** n[2])
 
-    # stream: Batch stream, reaction: RYE + 2 cat-H > RYA + cat2
+    # stream: Batch stream, reaction: RYE + 2 cat-H ⟶ RYA + cat2
     r_r[0, 3] = k[0, 3] * np.prod(c[0] ** n[3])
 
-    # stream: Batch stream, reaction: RYA + 2 cat-H > REA + cat2
+    # stream: Batch stream, reaction: RYA + 2 cat-H ⟶ REA + cat2
     r_r[0, 4] = k_ref[0, 4] * np.exp(- E_a[0, 4] / R * (1 / T - 1 / 293.15)) * np.prod(c[0] ** n[4])
 
-    # stream: Batch stream, reaction: REA + 2 cat-H > RDEt + cat2
+    # stream: Batch stream, reaction: REA + 2 cat-H ⟶ RDEt + cat2
     r_r[0, 5] = k[0, 5] * np.prod(c[0] ** n[5])
 
-    # stream: Batch stream, reaction: RDEt + catX > catX-RDEt
+    # stream: Batch stream, reaction: RDEt + catX ⟶ catX-RDEt
     r_r[0, 6] = k[0, 6] * np.prod(c[0] ** n[6])
 
-    # stream: Batch stream, reaction: catX-RDEt > RDEt + catX
+    # stream: Batch stream, reaction: catX-RDEt ⟶ RDEt + catX
     r_r[0, 7] = k[0, 7] * np.prod(c[0] ** n[7])
 
-    # stream: Batch stream, reaction: RYE + catX-RDEt > dimer + catX
+    # stream: Batch stream, reaction: RYE + catX-RDEt ⟶ dimer + catX
     r_r[0, 8] = k_ref[0, 8] * np.exp(- E_a[0, 8] / R * (1 / T - 1 / 293.15)) * np.prod(c[0] ** n[8])
 
-    # stream: Batch stream, reaction: REA + catX-RDEt > 2 H2 + dimer + catX
+    # stream: Batch stream, reaction: REA + catX-RDEt ⟶ 2 H2 + dimer + catX
     r_r[0, 9] = k_ref[0, 9] * np.exp(- E_a[0, 9] / R * (1 / T - 1 / 293.15)) * np.prod(c[0] ** n[9])
     
     r_r = np.maximum(r_r, 0)
@@ -326,16 +326,16 @@ class Hydrogenation(Benchmark):
     gases = ["Gas_Flow"]
     streams = ["Batch_Feed"]
     reactions = [
-        "H2 + cat2 > 2 cat-H",
-        "2 cat-H > H2 + cat2",
-        "RDY + 2 cat-H > RYE + cat2",
-        "RYE + 2 cat-H > RYA + cat2",
-        "RYA + 2 cat-H > REA + cat2",
-        "REA + 2 cat-H > RDEt + cat2",
-        "RDEt + catX > catX-RDEt",
-        "catX-RDEt > RDEt + catX",
-        "RYE + catX-RDEt > dimer + catX",
-        "REA + catX-RDEt > 2 H2 + dimer + catX"
+        "H2 + cat2 ⟶ 2 cat-H",
+        "2 cat-H ⟶ H2 + cat2",
+        "RDY + 2 cat-H ⟶ RYE + cat2",
+        "RYE + 2 cat-H ⟶ RYA + cat2",
+        "RYA + 2 cat-H ⟶ REA + cat2",
+        "REA + 2 cat-H ⟶ RDEt + cat2",
+        "RDEt + catX ⟶ catX-RDEt",
+        "catX-RDEt ⟶ RDEt + catX",
+        "RYE + catX-RDEt ⟶ dimer + catX",
+        "REA + catX-RDEt ⟶ 2 H2 + dimer + catX"
     ]
     species = ["water", "solvent", "RDY", "RYE", "RYA", "REA", "RDEt", "dimer", "H2", "cat2", "cat-H", "catX", "catX-RDEt"]
 
@@ -410,79 +410,79 @@ class Hydrogenation(Benchmark):
 
     def _setup_reaction_params(self):
         reaction_params = {
-            ("Rate_Constant", None, "Batch_Feed", "H2 + cat2 > 2 cat-H", None):           130,    # L/mol s
-            ("Rate_Constant", None, "Batch_Feed", "2 cat-H > H2 + cat2", None):           10,     # L/mol s
-            ("Rate_Constant", None, "Batch_Feed", "RYE + 2 cat-H > RYA + cat2", None):    50,     # L/mol s
-            ("Rate_Constant", None, "Batch_Feed", "REA + 2 cat-H > RDEt + cat2", None):   50,     # L/mol s
-            ("Rate_Constant", None, "Batch_Feed", "RDEt + catX > catX-RDEt", None):       1,      # L/mol s
-            ("Rate_Constant", None, "Batch_Feed", "catX-RDEt > RDEt + catX", None):       0.001,  # /s
+            ("Rate_Constant", None, "Batch_Feed", "H2 + cat2 ⟶ 2 cat-H", None):           130,    # L/mol s
+            ("Rate_Constant", None, "Batch_Feed", "2 cat-H ⟶ H2 + cat2", None):           10,     # L/mol s
+            ("Rate_Constant", None, "Batch_Feed", "RYE + 2 cat-H ⟶ RYA + cat2", None):    50,     # L/mol s
+            ("Rate_Constant", None, "Batch_Feed", "REA + 2 cat-H ⟶ RDEt + cat2", None):   50,     # L/mol s
+            ("Rate_Constant", None, "Batch_Feed", "RDEt + catX ⟶ catX-RDEt", None):       1,      # L/mol s
+            ("Rate_Constant", None, "Batch_Feed", "catX-RDEt ⟶ RDEt + catX", None):       0.001,  # /s
 
-            ("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RDY + 2 cat-H > RYE + cat2", None):            3, # L/mol s
-            ("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RYA + 2 cat-H > REA + cat2", None):            3, # L/mol s
-            ("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RYE + catX-RDEt > dimer + catX", None):        1, # L/mol s
-            ("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "REA + catX-RDEt > 2 H2 + dimer + catX", None): 1, # L/mol s
+            ("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RDY + 2 cat-H ⟶ RYE + cat2", None):            3, # L/mol s
+            ("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RYA + 2 cat-H ⟶ REA + cat2", None):            3, # L/mol s
+            ("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "RYE + catX-RDEt ⟶ dimer + catX", None):        1, # L/mol s
+            ("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", None): 1, # L/mol s
             
-            ("Activation_Energy", None, "Batch_Feed", "RDY + 2 cat-H > RYE + cat2", None):            30, # kJ/mol
-            ("Activation_Energy", None, "Batch_Feed", "RYA + 2 cat-H > REA + cat2", None):            30, # kJ/mol
-            ("Activation_Energy", None, "Batch_Feed", "RYE + catX-RDEt > dimer + catX", None):        38, # kJ/mol
-            ("Activation_Energy", None, "Batch_Feed", "REA + catX-RDEt > 2 H2 + dimer + catX", None): 38, # kJ/mol
+            ("Activation_Energy", None, "Batch_Feed", "RDY + 2 cat-H ⟶ RYE + cat2", None):            30, # kJ/mol
+            ("Activation_Energy", None, "Batch_Feed", "RYA + 2 cat-H ⟶ REA + cat2", None):            30, # kJ/mol
+            ("Activation_Energy", None, "Batch_Feed", "RYE + catX-RDEt ⟶ dimer + catX", None):        38, # kJ/mol
+            ("Activation_Energy", None, "Batch_Feed", "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", None): 38, # kJ/mol
 
-            ("Stoichiometric_Coefficient", None, None, "H2 + cat2 > 2 cat-H", "H2"):                            -1.0,
-            ("Stoichiometric_Coefficient", None, None, "H2 + cat2 > 2 cat-H", "cat2"):                          -1.0,
-            ("Stoichiometric_Coefficient", None, None, "H2 + cat2 > 2 cat-H", "cat-H"):                         2.0,
-            ("Stoichiometric_Coefficient", None, None, "2 cat-H > H2 + cat2", "cat-H"):                         -2.0,
-            ("Stoichiometric_Coefficient", None, None, "2 cat-H > H2 + cat2", "H2"):                            1.0,
-            ("Stoichiometric_Coefficient", None, None, "2 cat-H > H2 + cat2", "cat2"):                          1.0,
-            ("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H > RYE + cat2", "RDY"):                    -1.0,
-            ("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H > RYE + cat2", "cat-H"):                  -2.0,
-            ("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H > RYE + cat2", "RYE"):                    1.0,
-            ("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H > RYE + cat2", "cat2"):                   1.0,
-            ("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H > RYA + cat2", "RYE"):                    -1.0,
-            ("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H > RYA + cat2", "cat-H"):                  -2.0,
-            ("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H > RYA + cat2", "RYA"):                    1.0,
-            ("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H > RYA + cat2", "cat2"):                   1.0,
-            ("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H > REA + cat2", "RYA"):                    -1.0,
-            ("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H > REA + cat2", "cat-H"):                  -2.0,
-            ("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H > REA + cat2", "REA"):                    1.0,
-            ("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H > REA + cat2", "cat2"):                   1.0,
-            ("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H > RDEt + cat2", "REA"):                   -1.0,
-            ("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H > RDEt + cat2", "cat-H"):                 -2.0,
-            ("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H > RDEt + cat2", "RDEt"):                  1.0,
-            ("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H > RDEt + cat2", "cat2"):                  1.0,
-            ("Stoichiometric_Coefficient", None, None, "RDEt + catX > catX-RDEt", "RDEt"):                      -1.0,
-            ("Stoichiometric_Coefficient", None, None, "RDEt + catX > catX-RDEt", "catX"):                      -1.0,
-            ("Stoichiometric_Coefficient", None, None, "RDEt + catX > catX-RDEt", "catX-RDEt"):                 1.0,
-            ("Stoichiometric_Coefficient", None, None, "catX-RDEt > RDEt + catX", "catX-RDEt"):                 -1.0,
-            ("Stoichiometric_Coefficient", None, None, "catX-RDEt > RDEt + catX", "RDEt"):                      1.0,
-            ("Stoichiometric_Coefficient", None, None, "catX-RDEt > RDEt + catX", "catX"):                      1.0,
-            ("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt > dimer + catX", "RYE"):                -1.0,
-            ("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt > dimer + catX", "catX-RDEt"):          -1.0,
-            ("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt > dimer + catX", "dimer"):              1.0,
-            ("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt > dimer + catX", "catX"):               1.0,
-            ("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "REA"):         -1.0,
-            ("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "catX-RDEt"):   -1.0,
-            ("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "H2"):          2.0,
-            ("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "dimer"):       1.0,
-            ("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "catX"):        1.0,
+            ("Stoichiometric_Coefficient", None, None, "H2 + cat2 ⟶ 2 cat-H", "H2"):                            -1.0,
+            ("Stoichiometric_Coefficient", None, None, "H2 + cat2 ⟶ 2 cat-H", "cat2"):                          -1.0,
+            ("Stoichiometric_Coefficient", None, None, "H2 + cat2 ⟶ 2 cat-H", "cat-H"):                         2.0,
+            ("Stoichiometric_Coefficient", None, None, "2 cat-H ⟶ H2 + cat2", "cat-H"):                         -2.0,
+            ("Stoichiometric_Coefficient", None, None, "2 cat-H ⟶ H2 + cat2", "H2"):                            1.0,
+            ("Stoichiometric_Coefficient", None, None, "2 cat-H ⟶ H2 + cat2", "cat2"):                          1.0,
+            ("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "RDY"):                    -1.0,
+            ("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "cat-H"):                  -2.0,
+            ("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "RYE"):                    1.0,
+            ("Stoichiometric_Coefficient", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "cat2"):                   1.0,
+            ("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "RYE"):                    -1.0,
+            ("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "cat-H"):                  -2.0,
+            ("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "RYA"):                    1.0,
+            ("Stoichiometric_Coefficient", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "cat2"):                   1.0,
+            ("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "RYA"):                    -1.0,
+            ("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "cat-H"):                  -2.0,
+            ("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "REA"):                    1.0,
+            ("Stoichiometric_Coefficient", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "cat2"):                   1.0,
+            ("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "REA"):                   -1.0,
+            ("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "cat-H"):                 -2.0,
+            ("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "RDEt"):                  1.0,
+            ("Stoichiometric_Coefficient", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "cat2"):                  1.0,
+            ("Stoichiometric_Coefficient", None, None, "RDEt + catX ⟶ catX-RDEt", "RDEt"):                      -1.0,
+            ("Stoichiometric_Coefficient", None, None, "RDEt + catX ⟶ catX-RDEt", "catX"):                      -1.0,
+            ("Stoichiometric_Coefficient", None, None, "RDEt + catX ⟶ catX-RDEt", "catX-RDEt"):                 1.0,
+            ("Stoichiometric_Coefficient", None, None, "catX-RDEt ⟶ RDEt + catX", "catX-RDEt"):                 -1.0,
+            ("Stoichiometric_Coefficient", None, None, "catX-RDEt ⟶ RDEt + catX", "RDEt"):                      1.0,
+            ("Stoichiometric_Coefficient", None, None, "catX-RDEt ⟶ RDEt + catX", "catX"):                      1.0,
+            ("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "RYE"):                -1.0,
+            ("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "catX-RDEt"):          -1.0,
+            ("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "dimer"):              1.0,
+            ("Stoichiometric_Coefficient", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "catX"):               1.0,
+            ("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "REA"):         -1.0,
+            ("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "catX-RDEt"):   -1.0,
+            ("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "H2"):          2.0,
+            ("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "dimer"):       1.0,
+            ("Stoichiometric_Coefficient", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "catX"):        1.0,
             
-            ("Partial_Order", None, None, "H2 + cat2 > 2 cat-H", "H2"):                             1,
-            ("Partial_Order", None, None, "H2 + cat2 > 2 cat-H", "cat2"):                           1,
-            ("Partial_Order", None, None, "2 cat-H > H2 + cat2", "cat-H"):                          2,
-            ("Partial_Order", None, None, "RDY + 2 cat-H > RYE + cat2", "RDY"):                     1,
-            ("Partial_Order", None, None, "RDY + 2 cat-H > RYE + cat2", "cat-H"):                   1,
-            ("Partial_Order", None, None, "RYE + 2 cat-H > RYA + cat2", "RYE"):                     1,
-            ("Partial_Order", None, None, "RYE + 2 cat-H > RYA + cat2", "cat-H"):                   1,
-            ("Partial_Order", None, None, "RYA + 2 cat-H > REA + cat2", "RYA"):                     1,
-            ("Partial_Order", None, None, "RYA + 2 cat-H > REA + cat2", "cat-H"):                   1,
-            ("Partial_Order", None, None, "REA + 2 cat-H > RDEt + cat2", "REA"):                    1,
-            ("Partial_Order", None, None, "REA + 2 cat-H > RDEt + cat2", "cat-H"):                  1,
-            ("Partial_Order", None, None, "RDEt + catX > catX-RDEt", "RDEt"):                       1,
-            ("Partial_Order", None, None, "RDEt + catX > catX-RDEt", "catX"):                       1,
-            ("Partial_Order", None, None, "catX-RDEt > RDEt + catX", "catX-RDEt"):                  1,
-            ("Partial_Order", None, None, "RYE + catX-RDEt > dimer + catX", "RYE"):                 1,
-            ("Partial_Order", None, None, "RYE + catX-RDEt > dimer + catX", "catX-RDEt"):           1,
-            ("Partial_Order", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "REA"):          1,
-            ("Partial_Order", None, None, "REA + catX-RDEt > 2 H2 + dimer + catX", "catX-RDEt"):    1,
+            ("Partial_Order", None, None, "H2 + cat2 ⟶ 2 cat-H", "H2"):                             1,
+            ("Partial_Order", None, None, "H2 + cat2 ⟶ 2 cat-H", "cat2"):                           1,
+            ("Partial_Order", None, None, "2 cat-H ⟶ H2 + cat2", "cat-H"):                          2,
+            ("Partial_Order", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "RDY"):                     1,
+            ("Partial_Order", None, None, "RDY + 2 cat-H ⟶ RYE + cat2", "cat-H"):                   1,
+            ("Partial_Order", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "RYE"):                     1,
+            ("Partial_Order", None, None, "RYE + 2 cat-H ⟶ RYA + cat2", "cat-H"):                   1,
+            ("Partial_Order", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "RYA"):                     1,
+            ("Partial_Order", None, None, "RYA + 2 cat-H ⟶ REA + cat2", "cat-H"):                   1,
+            ("Partial_Order", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "REA"):                    1,
+            ("Partial_Order", None, None, "REA + 2 cat-H ⟶ RDEt + cat2", "cat-H"):                  1,
+            ("Partial_Order", None, None, "RDEt + catX ⟶ catX-RDEt", "RDEt"):                       1,
+            ("Partial_Order", None, None, "RDEt + catX ⟶ catX-RDEt", "catX"):                       1,
+            ("Partial_Order", None, None, "catX-RDEt ⟶ RDEt + catX", "catX-RDEt"):                  1,
+            ("Partial_Order", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "RYE"):                 1,
+            ("Partial_Order", None, None, "RYE + catX-RDEt ⟶ dimer + catX", "catX-RDEt"):           1,
+            ("Partial_Order", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "REA"):          1,
+            ("Partial_Order", None, None, "REA + catX-RDEt ⟶ 2 H2 + dimer + catX", "catX-RDEt"):    1,
         }
         return reaction_params
 
@@ -708,34 +708,34 @@ class Hydrogenation(Benchmark):
 
             # reaction
             r_r = np.zeros((1, 10), dtype=np.float64)
-            # stream: Batch stream, reaction: H2 + cat2 > 2 cat-H
+            # stream: Batch stream, reaction: H2 + cat2 ⟶ 2 cat-H
             r_r[0, 0] = k[0, 0] * np.prod(c[0] ** n[0])
 
-            # stream: Batch stream, reaction: 2 cat-H > H2 + cat2
+            # stream: Batch stream, reaction: 2 cat-H ⟶ H2 + cat2
             r_r[0, 1] = k[0, 1] * np.prod(c[0] ** n[1])
 
-            # stream: Batch stream, reaction: RDY + 2 cat-H > RYE + cat2
+            # stream: Batch stream, reaction: RDY + 2 cat-H ⟶ RYE + cat2
             r_r[0, 2] = k_ref[0, 2] * np.exp(- E_a[0, 2] / R * (1 / T - 1 / 293.15)) * np.prod(c[0] ** n[2])
 
-            # stream: Batch stream, reaction: RYE + 2 cat-H > RYA + cat2
+            # stream: Batch stream, reaction: RYE + 2 cat-H ⟶ RYA + cat2
             r_r[0, 3] = k[0, 3] * np.prod(c[0] ** n[3])
 
-            # stream: Batch stream, reaction: RYA + 2 cat-H > REA + cat2
+            # stream: Batch stream, reaction: RYA + 2 cat-H ⟶ REA + cat2
             r_r[0, 4] = k_ref[0, 4] * np.exp(- E_a[0, 4] / R * (1 / T - 1 / 293.15)) * np.prod(c[0] ** n[4])
 
-            # stream: Batch stream, reaction: REA + 2 cat-H > RDEt + cat2
+            # stream: Batch stream, reaction: REA + 2 cat-H ⟶ RDEt + cat2
             r_r[0, 5] = k[0, 5] * np.prod(c[0] ** n[5])
 
-            # stream: Batch stream, reaction: RDEt + catX > catX-RDEt
+            # stream: Batch stream, reaction: RDEt + catX ⟶ catX-RDEt
             r_r[0, 6] = k[0, 6] * np.prod(c[0] ** n[6])
 
-            # stream: Batch stream, reaction: catX-RDEt > RDEt + catX
+            # stream: Batch stream, reaction: catX-RDEt ⟶ RDEt + catX
             r_r[0, 7] = k[0, 7] * np.prod(c[0] ** n[7])
 
-            # stream: Batch stream, reaction: RYE + catX-RDEt > dimer + catX
+            # stream: Batch stream, reaction: RYE + catX-RDEt ⟶ dimer + catX
             r_r[0, 8] = k_ref[0, 8] * np.exp(- E_a[0, 8] / R * (1 / T - 1 / 293.15)) * np.prod(c[0] ** n[8])
 
-            # stream: Batch stream, reaction: REA + catX-RDEt > 2 H2 + dimer + catX
+            # stream: Batch stream, reaction: REA + catX-RDEt ⟶ 2 H2 + dimer + catX
             r_r[0, 9] = k_ref[0, 9] * np.exp(- E_a[0, 9] / R * (1 / T - 1 / 293.15)) * np.prod(c[0] ** n[9])
             
             # mass equilibrium
