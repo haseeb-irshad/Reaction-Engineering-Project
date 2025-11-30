@@ -32,7 +32,7 @@ class PyrrolidineSNAr(Benchmark):
         - 'Activation_Energy'                   : kJ/mol
         - 'Referenced_Reaction_Rate_Constant'   : 
         - 'Concentration'                       : mol/L
-        - 'Temperature'                         : oC
+        - 'Temperature'                         : °C
         - 'Residence Time'                      : min
 
     References
@@ -134,7 +134,7 @@ class PyrrolidineSNAr(Benchmark):
         operation_params = {
             ("Concentration", None, "Continuous_Flow", None, "dfnb"): 0.2,  # mol/L
             ("Concentration", None, "Continuous_Flow", None, "prld"): None,  # mol/L
-            ("Temperature", None, None, None, None): None,  # oC
+            ("Temperature", None, None, None, None): None,  # °C
             ("Residence_Time", None, None, None, None): None,  # min
         }
         return operation_params
@@ -157,7 +157,7 @@ class PyrrolidineSNAr(Benchmark):
         var2unit = {
             "Activation_Energy": "kJ/mol",
             "Referenced_Reaction_Rate_Constant": None,
-            "Temperature": "oC",
+            "Temperature": "°C",
             "Concentration": "mol/L",
             "Residence_Time": "min",
         }
@@ -321,7 +321,7 @@ class PyrrolidineSNAr(Benchmark):
         temperatures = operation_params[("Temperature", None, None, None, None)]
         residence_time = operation_params[("Residence_Time", None, None, None, None)]
         prld_conc = operation_params[("Concentration", None, "Continuous_Flow", None, "prld")]
-        data = {"Time (min)": [], "3 Ortho concentration (mol/L)": [], "Temperature (oC)": []}
+        data = {"Time (min)": [], "3 Ortho concentration (mol/L)": [], "Temperature (°C)": []}
         for temperature in temperatures:
             _operation_params = {
                 ("Temperature", None, None, None, None): temperature,
@@ -332,9 +332,9 @@ class PyrrolidineSNAr(Benchmark):
             for _t, _c in zip(t, cs[self.species.index("ortho")]):
                 data["Time (min)"].append(_t)
                 data["3 Ortho concentration (mol/L)"].append(_c)
-                data["Temperature (oC)"].append(temperature)
+                data["Temperature (°C)"].append(temperature)
         df = pd.DataFrame(data)
-        fig = px.line(df, x="Time (min)", y="3 Ortho concentration (mol/L)", color="Temperature (oC)")
+        fig = px.line(df, x="Time (min)", y="3 Ortho concentration (mol/L)", color="Temperature (°C)")
         fig.update_layout(width=800, height=500, title="Product Concentration Profiles under Varied Temperatures")
         fig.show()
 
@@ -378,7 +378,7 @@ class PyrrolidineSNAr(Benchmark):
         data = []
         for temperature in temperatures:
             d = {
-                "Temperature (oC)": temperature,
+                "Temperature (°C)": temperature,
                 "Residence time (min)": [], 
                 "2 Pyrrolidine concentration (mol/L)": [], 
                 "3 Ortho concentration (mol/L)": [], 
@@ -413,7 +413,7 @@ class PyrrolidineSNAr(Benchmark):
                     y=[d["2 Pyrrolidine concentration (mol/L)"][0, -1]], 
                     z=[d["3 Ortho concentration (mol/L)"][0, -1]], 
                     mode="text",
-                    text=[f"T = {d['Temperature (oC)']} oC"],
+                    text=[f"T = {d['Temperature (°C)']} °C"],
                     textposition="bottom right",
                     textfont=dict(size=12, color="red"),
                     showlegend=False,
@@ -457,7 +457,7 @@ class PyrrolidineSNAr(Benchmark):
         shape = (len(residence_times), len(prld_concs))
 
         gt_data = {
-            "Temperature (oC)": temperature,
+            "Temperature (°C)": temperature,
             "Residence time (min)": [], 
             "2 Pyrrolidine concentration (mol/L)": [], 
             "3 Ortho concentration (mol/L)": [], 
@@ -478,7 +478,7 @@ class PyrrolidineSNAr(Benchmark):
         gt_data["3 Ortho concentration (mol/L)"] = np.array(gt_data["3 Ortho concentration (mol/L)"]).reshape(shape)
 
         cal_data = {
-            "Temperature (oC)": temperature,
+            "Temperature (°C)": temperature,
             "Residence time (min)": [], 
             "2 Pyrrolidine concentration (mol/L)": [], 
             "3 Ortho concentration (mol/L)": [], 

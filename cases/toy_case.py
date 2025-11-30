@@ -23,14 +23,14 @@ class ToyCase(Benchmark):
         - 'Activation_Energy'                   : kJ/mol
         - 'Referenced_Reaction_Rate_Constant'   : 
         - 'Concentration'                       : mol/L
-        - 'Temperature'                         : oC
+        - 'Temperature'                         : °C
 
     """
 
     solids = []
     gases = []
     streams = ["Batch_Feed"]
-    reactions = ["A > B"]
+    reactions = ["A ⟶ B"]
     species = ["A", "B"]
 
     def __init__(self, phenos, random_seed=0):
@@ -75,11 +75,11 @@ class ToyCase(Benchmark):
 
     def _setup_reaction_params(self):
         reaction_params = {
-            ("Activation_Energy", None, "Batch_Feed", "A > B", None): 80.0,  # kJ/mol
-            ("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "A > B", None): 0.0001,  # L/mol s
-            ("Stoichiometric_Coefficient", None, None, "A > B", "A"): -1,
-            ("Stoichiometric_Coefficient", None, None, "A > B", "B"): 1,
-            ("Partial_Order", None, None, "A > B", "A"): 1,
+            ("Activation_Energy", None, "Batch_Feed", "A ⟶ B", None): 80.0,  # kJ/mol
+            ("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "A ⟶ B", None): 0.0001,  # L/mol s
+            ("Stoichiometric_Coefficient", None, None, "A ⟶ B", "A"): -1,
+            ("Stoichiometric_Coefficient", None, None, "A ⟶ B", "B"): 1,
+            ("Partial_Order", None, None, "A ⟶ B", "A"): 1,
         }
         return reaction_params
 
@@ -90,7 +90,7 @@ class ToyCase(Benchmark):
     def _setup_operation_params(self):
         operation_params = {
             ("Concentration", None, "Batch_Feed", None, "A"):   None, # mol/L
-            ("Temperature", None, None, None, None):            None, # oC
+            ("Temperature", None, None, None, None):            None, # °C
             ("Batch_Time", None, None, None, None):             None, # min
         }
         return operation_params
@@ -113,7 +113,7 @@ class ToyCase(Benchmark):
         var2unit = {
             "Activation_Energy": "kJ/mol",
             "Referenced_Reaction_Rate_Constant": None,
-            "Temperature": "oC",
+            "Temperature": "°C",
             "Concentration": "mol/L",
             "Batch_Time": "min",
         }
@@ -128,14 +128,14 @@ class ToyCase(Benchmark):
         c_0 = np.zeros((1, 2), dtype=np.float64)
         c_0[0, 0] = params[("Concentration", None, "Batch_Feed", None, "A")]
         nu = np.zeros((1, 2), dtype=np.float64)
-        nu[0, 0] = params[("Stoichiometric_Coefficient", None, None, "A > B", "A")]
-        nu[0, 1] = params[("Stoichiometric_Coefficient", None, None, "A > B", "B")]
+        nu[0, 0] = params[("Stoichiometric_Coefficient", None, None, "A ⟶ B", "A")]
+        nu[0, 1] = params[("Stoichiometric_Coefficient", None, None, "A ⟶ B", "B")]
         n = np.zeros((1, 2), dtype=np.float64)
-        n[0, 0] = params[("Partial_Order", None, None, "A > B", "A")]
+        n[0, 0] = params[("Partial_Order", None, None, "A ⟶ B", "A")]
         A = np.zeros((1, 1), dtype=np.float64)
-        A[0, 0] = params[("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "A > B", None)]
+        A[0, 0] = params[("Referenced_Reaction_Rate_Constant", None, "Batch_Feed", "A ⟶ B", None)]
         E_a = np.zeros((1, 1), dtype=np.float64)
-        E_a[0, 0] = params[("Activation_Energy", None, "Batch_Feed", "A > B", None)]
+        E_a[0, 0] = params[("Activation_Energy", None, "Batch_Feed", "A ⟶ B", None)]
         E_a *= 1000
 
         def _derivative(t, c):
@@ -245,7 +245,7 @@ class ToyCase(Benchmark):
         temperatures = operation_params[("Temperature", None, None, None, None)]
         batch_time = operation_params[("Batch_Time", None, None, None, None)]
         A_conc = operation_params[("Concentration", None, "Batch_Feed", None, "A")]
-        data = {"Time (min)": [], "B concentration (mol/L)": [], "Temperature (oC)": []}
+        data = {"Time (min)": [], "B concentration (mol/L)": [], "Temperature (°C)": []}
         for temperature in temperatures:
             _operation_params = {
                 ("Temperature", None, None, None, None): temperature,
@@ -256,9 +256,9 @@ class ToyCase(Benchmark):
             for _t, _c in zip(t, cs[self.species.index("B")]):
                 data["Time (min)"].append(_t)
                 data["B concentration (mol/L)"].append(_c)
-                data["Temperature (oC)"].append(temperature)
+                data["Temperature (°C)"].append(temperature)
         df = pd.DataFrame(data)
-        fig = px.line(df, x="Time (min)", y="B concentration (mol/L)", color="Temperature (oC)")
+        fig = px.line(df, x="Time (min)", y="B concentration (mol/L)", color="Temperature (°C)")
         fig.update_layout(width=800, height=500, title="Product Concentration Profiles under Varied Temperatures")
         fig.show()
 

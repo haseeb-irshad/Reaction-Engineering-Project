@@ -13,7 +13,7 @@ from .benchmark import Benchmark
 operation_name2ind = {
     "m_rdy":        ("Initial_Mass_Solid", "Solid_Feedstock", None, None, "RDY"),   # kg
     "t_b":          ("Batch_Time", None, None, None, None),                         # min
-    "temp":         ("Temperature", None, None, None, None),                        # oC
+    "temp":         ("Temperature", None, None, None, None),                        # °C
     "pressure":     ("Pressure", None, None, None, None),                           # bar
     "agitation":    ("Agitation", None, None, None, None),                          # rpm
 }
@@ -316,7 +316,7 @@ class Hydrogenation(Benchmark):
         - 'Solid-Liquid_Volumetric_Mass_Transfer_Coefficient'   : /s
         - 'Saturated_Concentration'                             : mol/L
         - 'Henry's_Constant'                                    : 
-        - 'Temperature'                                         : oC
+        - 'Temperature'                                         : °C
         - 'Pressure'                                            : bar
         - 'Batch_Time'                                          : min
 
@@ -506,7 +506,7 @@ class Hydrogenation(Benchmark):
             ("Initial_Mass", None, "Batch_Feed", None, "catX"):           0.00235,    # kg
             ("Mass_Gas_Fraction", "Gas_Flow", None, None, "H2"):            1.0,
             ("Initial_Mass_Solid", "Solid_Feedstock", None, None, "RDY"):   None,       # kg
-            ("Temperature", None, None, None, None):                        None,       # oC
+            ("Temperature", None, None, None, None):                        None,       # °C
             ("Pressure", None, None, None, None):                           None,       # bar
             ("Agitation", None, None, None, None):                          None,       # rpm
             ("Batch_Time", None, None, None, None):                         None,       # min
@@ -517,7 +517,7 @@ class Hydrogenation(Benchmark):
         operation_name2ind = {
             "m_rdy":        ("Initial_Mass_Solid", "Solid_Feedstock", None, None, "RDY"),   # kg
             "t_b":          ("Batch_Time", None, None, None, None),                         # min
-            "temp":         ("Temperature", None, None, None, None),                        # oC
+            "temp":         ("Temperature", None, None, None, None),                        # °C
             "pressure":     ("Pressure", None, None, None, None),                           # bar
             "agitation":    ("Agitation", None, None, None, None),                          # rpm
         }
@@ -547,7 +547,7 @@ class Hydrogenation(Benchmark):
             "Solid-Liquid_Volumetric_Mass_Transfer_Coefficient_alph": None,
             "Henry's_Constant": None,
             "Saturated_Concentration": "mol/L",
-            "Temperature": "oC",
+            "Temperature": "°C",
             "Pressure": "bar",
             "Agitation": "rpm",
             "Concentration": "mol/L",
