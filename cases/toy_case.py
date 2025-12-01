@@ -33,7 +33,7 @@ class ToyCase(Benchmark):
     reactions = ["A ⟶ B"]
     species = ["A", "B"]
 
-    def __init__(self, phenos, random_seed=0):
+    def __init__(self, phenos, random_seed = 0):
         structure_params = self._setup_structure_params()
         physics_params = self._setup_physics_params()
         reaction_params = self._setup_reaction_params()
