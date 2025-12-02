@@ -1,4 +1,4 @@
-# Reaction Engineering Modelling & Parameter Identification
+# Reaction Engineering Modelling
 This repository contains my completed work for a **Reaction Engineering Project** undertaken under the guidance of the University of Cambridge. The project involved running simulations, analysing reactor behaviour, performing kinetic parameter identification and applying optimisation and surrogate modelling techniques using Python and Jupyter notebooks.  
 The modelling framework was provided as part of the coursework; my contribution focused on understanding the system behaviour, running simulations, interpreting results and completing the analytical tasks.
 
